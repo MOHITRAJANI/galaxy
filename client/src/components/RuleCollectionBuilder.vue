@@ -1661,16 +1661,18 @@ export default {
             return { data, sources };
         },
         highlightColumn(n) {
-            const headerSelection = $(`.htCore > thead > tr > th:nth-child(${n + 1})`);
-            headerSelection.addClass("ht__highlight");
-            const bodySelection = $(`.htCore > tbody > tr > td:nth-child(${n + 1})`);
-            bodySelection.addClass("rule-highlight");
+            const headerSelection = document.querySelectorAll(`.htCore > thead > tr > th:nth-child(${n + 1})`);
+            console.log('Header Selection ', headerSelection)
+            headerSelection.forEach((child) => child.classList.add("ht__highlight"));
+            const bodySelection = document.querySelectorAll(`.htCore > tbody > tr > td:nth-child(${n + 1})`);
+            bodySelection.forEach((child) => child.classList.add("rule-highlight"));
         },
         unhighlightColumn(n) {
-            const headerSelection = $(`.htCore > thead > tr > th:nth-child(${n + 1})`);
-            headerSelection.removeClass("ht__highlight");
-            const bodySelection = $(`.htCore > tbody > tr > td:nth-child(${n + 1})`);
-            bodySelection.removeClass("rule-highlight");
+            const headerSelection = document.querySelectorAll(`.htCore > thead > tr > th:nth-child(${n + 1})`);
+            headerSelection.forEach((child) => child.classList.remove("ht__highlight"));
+            const bodySelection = document.querySelectorAll(`.htCore > tbody > tr > td:nth-child(${n + 1})`);
+            bodySelection.forEach((child) => child.classList.remove("rule-highlight"));
+
         },
         _datasetFor(dataIndex, data, mappingAsDict) {
             const res = {};

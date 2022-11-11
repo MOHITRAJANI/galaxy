@@ -69,6 +69,7 @@ export function createStore() {
             informationStore: jobStore,
             invocations: invocationStore,
             jobMetrics: jobMetricsStore,
+            accountingArray: jobMetricsStore,
             dbkeyStore: dbKeyStore,
             gridSearch: gridSearchStore,
             history: historyStore,

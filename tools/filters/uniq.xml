@@ -4,7 +4,7 @@
         <requirement type="package" version="8.30">coreutils</requirement>
         <requirement type="package" version="3.7">python</requirement>
     </requirements>
-  <command>python '$__tool_directory__/uniq.py' -i '$input' -o '$out_file1' -c '$column' -d $delim -s $sorting</command>
+  <command>python '$__tool_directory__/uniq.py' -i '$input' -o '$out_file1' -c '$column' -d $delim -s $sorting -st $sleeptime </command>
   <inputs>
     <param name="input" type="data" format="tabular" label="from dataset" help="Dataset missing? See TIP below"/>
     <param name="column" type="data_column" data_ref="input" multiple="True" numerical="False" label="Count occurrences of values in column(s)" help="Multi-select list - hold the appropriate key while clicking to select multiple columns" />
@@ -17,6 +17,7 @@
       <option value="U">Underscore</option>
       <option value="P">Pipe</option>
     </param>
+    <param name="sleeptime" type="integer" value="5" label="Sleep for?" help="This is a sleep timer for creating test-data for Accounting Feature" />
     <param name="sorting" type="select" label="How should the results be sorted?">
       <option value="value">By the values being counted</option>
       <option value="largest">With the most common values first</option>

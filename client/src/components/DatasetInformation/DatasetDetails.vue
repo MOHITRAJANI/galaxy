@@ -13,17 +13,25 @@
                         v-slot="{ result: job, loading: isJobLoading }"
                         :job-id="dataset.creating_job"
                         auto-refresh>
-                        <div v-if="!isJobLoading" class="details">
-                            <dataset-information :hda_id="datasetId" />
-                            <job-parameters dataset_type="hda" :dataset-id="datasetId" />
-                            <job-information :job_id="dataset.creating_job" />
-                            <dataset-storage :dataset-id="datasetId" />
-                            <inheritance-chain :dataset-id="datasetId" :dataset-name="dataset.name" />
-                            <job-metrics v-if="config" :aws_estimate="config.aws_estimate" :dataset-id="datasetId" />
-                            <job-destination-params v-if="user.is_admin" :job-id="dataset.creating_job" />
-                            <job-dependencies :dependencies="job.dependencies"></job-dependencies>
-                            <div v-if="dataset.peek">
-                                <h2 class="h-md">Dataset Peek</h2>
+                        <div v-if="!isJobLoading">
+                            <dataset-information class="detail" :hda_id="datasetId" />
+                            <job-parameters class="detail" dataset_type="hda" :dataset-id="datasetId" />
+                            <job-information class="detail" :job_id="dataset.creating_job" />
+                            <dataset-storage class="detail" :dataset-id="datasetId" />
+                            <inheritance-chain class="detail" :dataset-id="datasetId" :dataset-name="dataset.name" />
+                            <!-- {{ MyPrint(config) }} -->
+                            <job-metrics
+                                v-if="config"
+                                class="detail"
+                                :aws_estimate="config.aws_estimate"
+                                :dataset-id="datasetId" />
+                            <job-destination-params
+                                v-if="user.is_admin"
+                                class="detail"
+                                :job-id="dataset.creating_job" />
+                            <job-dependencies class="detail" :dependencies="job.dependencies"></job-dependencies>
+                            <div v-if="dataset.peek" class="detail">
+                                <h3>Dataset Peek:</h3>
                                 <div v-html="dataset.peek" />
                             </div>
                         </div>
@@ -84,6 +92,11 @@ export default {
             required: true,
         },
     },
+    methods: {
+        MyPrint(what) {
+            console.log(what)
+        }
+    }
 };
 </script>
 

@@ -8,7 +8,7 @@ convert_characters.py
 #if $condense
   --condense
 #end if
-$input $convert_from $out_file1
+$input $convert_from $out_file1 $sleeptime
   </command>
   <inputs>
     <param name="convert_from" type="select" label="Convert all">
@@ -23,6 +23,7 @@ $input $convert_from $out_file1
       <option value="Co">Colons</option>
       <option value="Sc">Semicolons</option>
     </param>
+    <param name="sleeptime" type="integer" value="5" label="Sleep for?" help="This is a sleep timer for creating test-data for Accounting Feature" />
     <param format="txt" name="input" type="data" label="in Dataset"/>
     <param name="strip" type="boolean" checked="true" label="Strip leading and trailing whitespaces" />
     <param name="condense" type="boolean" checked="true" label="Condense consecutive delimiters in one TAB" />

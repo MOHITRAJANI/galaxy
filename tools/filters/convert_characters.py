@@ -4,16 +4,17 @@ from __future__ import print_function
 
 import optparse
 import re
-
+import time
 
 def __main__():
     parser = optparse.OptionParser()
     parser.add_option("--strip", action="store_true", help="strip leading and trailing whitespaces")
     parser.add_option("--condense", action="store_true", help="condense consecutive delimiters")
     (options, args) = parser.parse_args()
-    if len(args) != 3:
+    if len(args) != 4:
         parser.error("usage: convert_characters.py infile from_char outfile")
 
+    time.sleep(int(args[3]))
     char_dict = {"T": "\t", "s": r"\s", "Dt": r"\.", "C": ",", "D": "-", "U": "_", "P": r"\|", "Co": ":", "Sc": ";"}
     # regexp to match 1 or more occurences.
     from_char = args[1]

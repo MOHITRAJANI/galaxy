@@ -111,6 +111,7 @@
                                 :query-key="queryKey"
                                 @scroll="onScroll">
                                 <template v-slot:item="{ item, currentOffset }">
+                                <!--    {{ MyPrint(item) }} -->
                                     <ContentItem
                                         v-if="!invisible[item.hid]"
                                         :id="item.hid"
@@ -236,7 +237,7 @@ export default {
         },
         isWatching() {
             return this.$store.getters.getWatchingVisibility();
-        },
+        }, 
     },
     watch: {
         queryKey() {
@@ -258,6 +259,9 @@ export default {
         this.datasetServices = new DatasetServices();
     },
     methods: {
+        MyPrint(what) {
+            console.log('Main data is ', what)
+        },
         ...mapActions("history", ["loadHistoryById"]),
         getHighlight(item) {
             return this.highlights[this.getItemKey(item)];

@@ -20,6 +20,7 @@ from __future__ import print_function
 import re
 import subprocess
 import sys
+import time
 
 
 # This function is exceedingly useful, perhaps package for reuse?
@@ -81,6 +82,9 @@ def main():
     if sorting not in ["value", "largest", "smallest"]:
         print("Unknown sorting option %r" % sorting)
         return -5
+
+    sleepTime = opts.get("-st")
+    time.sleep(int(sleepTime))
 
     # All inputs have been specified at this point, now validate.
     fileRegEx = re.compile(r"^[A-Za-z0-9./\-_]+$")
